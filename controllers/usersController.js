@@ -6,17 +6,17 @@ var passport        = require('passport');
 var LocalStrategy   = require('passport-local').Strategy;
 var User            = require('../models/user.js');
 // ======================================================
-// DUMMIE TEST ROUTE
-router.get('/test', (req, res) => {
-  res.send('test route is working!');
-});
+// // DUMMIE TEST ROUTE
+// router.get('/test', (req, res) => {
+//   res.send('test route is working!');
+// });
 
 // USERS INDEX ROUTE
-router.get('/', (req, res) => {
-  User.find({}, function(err, users){
-  res.render('users/index', {users: users})
-  });
-});
+// router.get('/', (req, res) => {
+//   // User.find({}, function(err, users){
+//   res.render('users/index', {users: users})
+//   //});
+// });
 
 // USERS NEW ROUTE
 router.get('/new', function(req, res){
@@ -94,20 +94,18 @@ router.delete('/:userId/book/:id', function (req, res){
 
 
 
-
-
-
 // SIGN UP ROUTE
 router.get('/signup', function(req, res) {
+  console.log('signup route');
   User.register(new User(
     {username: req.body.username }),
     req.body.password,
     function(err, user) {
-      if (err) {
-        return res.render('signup');
-      }
-      res.redirect('/');
-    });
+     if (err) {
+       return res.status(400).send("Can not register");
+       }
+     res.redirect('/users/signup');
+     });
 });
 
 
@@ -124,6 +122,7 @@ router.post('/login', passport.authenticate('local'), function(req, res){
     res.redirect('users');
   });
 });
+
 // A LITTLE PROMISE LOGIC
 var auth = function(req, res, next){
   if(!req.user || req.user._id !=req.params.id){

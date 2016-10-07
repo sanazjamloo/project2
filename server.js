@@ -25,7 +25,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
-var usersController = require('./controllers/usersController.js');
 app.use('/users', usersController);
 
 app.use(require('express-session')({
@@ -35,15 +34,16 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-console.log(User);
-// passport.use(User.createStrategy());
+// console.log(User);
+passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 // ===================================================
 
 // ROOT ROUTE
 app.get('/', function(req, res){
-  res.send("WELCOME TO MY BOOKWORMS CLUB!!! root route");
+  // res.send("WELCOME TO MY BOOKWORMS CLUB!!! root route");
+  res.render('homepage')
 });
 
 
