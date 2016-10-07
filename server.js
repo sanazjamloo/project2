@@ -7,7 +7,7 @@ var methodOverride  = require('method-override');
 var hbs             = require('hbs');
 var passport        = require('passport');
 var LocalStrategy   = require('passport-local').Strategy;
-var usersController = require('./controllers/users.js');
+var usersController = require('./controllers/usersController.js');
 // pry                 = require('pryjs');
 // ===================================================
 //  MODELS
@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
-
+var usersController = require('./controllers/usersController.js');
 app.use('/users', usersController);
 
 app.use(require('express-session')({

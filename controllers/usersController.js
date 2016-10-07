@@ -7,7 +7,7 @@ var LocalStrategy   = require('passport-local').Strategy;
 var User            = require('../models/user.js');
 // ======================================================
 
-// INDEX ROUTE
+// USERS INDEX ROUTE
 router.get('/', (req, res) => {
   console.log('session', req.session)
   console.log('req.user', req.user)
