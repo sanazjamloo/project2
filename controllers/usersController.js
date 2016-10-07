@@ -6,6 +6,10 @@ var passport        = require('passport');
 var LocalStrategy   = require('passport-local').Strategy;
 var User            = require('../models/user.js');
 // ======================================================
+// DUMMIE TEST ROUTE
+router.get('/test', (req, res) => {
+  res.send('test route is working!');
+});
 
 // USERS INDEX ROUTE
 router.get('/', (req, res) => {
@@ -19,14 +23,32 @@ router.get('/new', function(req, res){
   // res.send("New is working");
   res.render('users/new');
 });
-
-
-
-
-// DUMMIE TEST ROUTE
-router.get('/test', (req, res) => {
-  res.send('test route is working!');
+// USERS SHOW ROUTE
+router.get('/:id', function(req, res){
+  User.findById(req.params.id, function(err, user){
+    console.log(user);
+    res.send(user);
+  });
 });
+
+
+
+
+
+// USERS CREATE ROUTE
+router.post('/', function(req,res){
+  var User = new User({
+    name: req.body.name,
+    book: req.body.book,
+  });
+  user.save(function(err, user){
+    // console.log(user);
+    res.redirect('/users');
+  });
+});
+
+
+
 
 // SIGN UP ROUTE/CREATE NEW USER
 router.get('/signup', function(req, res) {
