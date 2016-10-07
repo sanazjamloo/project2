@@ -1,0 +1,11 @@
+<h1> users index page/ Create book history</h1>
+
+{{#if user}}
+Hi! {{user.username}}
+  {{else}}
+  Please sign up! (join the bookworms club!)
+  {{/if}}
+  <ul>
+    <li>{{username}}</li>
+    <a href="/users/{{_id}}">show</a>
+  </ul>

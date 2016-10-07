@@ -1,0 +1,8 @@
+<h3>{{user.username}}</h3>
+<h4>Favorite Book: {{user.faveBook}}</h4>
+<br><br>
+Click here to sign out:
+<br><br>
+<form action='/home/{{user.userId}}?_method=DELETE' method="POST">
+<button type='sumit' name='logout'>Sign Out</button>
+</form>
