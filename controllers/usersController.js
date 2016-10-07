@@ -50,10 +50,16 @@ router.get('/:id/edit', function(req, res){
     res.render('users/edit', {user: user});
   });
 });
+// USERS UPDATE ROUTE
+router.put('/:id', function(req, res){
+  User.findByIdAndUpdate(req.params.id,{
+    name: req.body.name
+  }, {new: true}, function(err, user){
+    res.render('users/show', {user:user});
+  });
+});
 
-
-
-// SIGN UP ROUTE/CREATE NEW USER
+// SIGN UP ROUTE
 router.get('/signup', function(req, res) {
   User.register(new User(
     {username: req.body.username }),
