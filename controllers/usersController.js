@@ -26,8 +26,9 @@ router.get('/new', function(req, res){
 // USERS SHOW ROUTE
 router.get('/:id', function(req, res){
   User.findById(req.params.id, function(err, user){
-    console.log(user);
-    res.send(user);
+    // console.log(user);
+    // res.send(user);
+    res.render('users/show', {user: user});
   });
 });
 
