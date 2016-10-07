@@ -79,6 +79,22 @@ router.post('/:id/book', function(req, res){
     });
 });
 
+// REMOVE A BOOK FROM THE LIST
+router.delete('/:userId/book/:id', function (req, res){
+  User.findByIdAndUpdate(req.params.userId, {
+    $pull: {
+      book: {_id: req.params.id}
+    }
+  }, function(err) {
+    res.redirect(`/users/${req.params.userId}`);
+  });
+});
+
+
+
+
+
+
 
 
 // SIGN UP ROUTE
