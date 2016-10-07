@@ -50,6 +50,7 @@ router.get('/:id/edit', function(req, res){
     res.render('users/edit', {user: user});
   });
 });
+
 // USERS UPDATE ROUTE
 router.put('/:id', function(req, res){
   User.findByIdAndUpdate(req.params.id,{
@@ -58,6 +59,15 @@ router.put('/:id', function(req, res){
     res.render('users/show', {user:user});
   });
 });
+
+
+// USERS DELETE ROUTE
+router.get('/:id/delete', function(req, res){
+  User.findByIdAndRemove(req.params.id, function(err, user){
+    res.redirect('/users');
+  });
+});
+
 
 // SIGN UP ROUTE
 router.get('/signup', function(req, res) {
