@@ -69,6 +69,18 @@ router.get('/:id/delete', function(req, res){
 });
 
 
+// CREATE A NEW BOOK FOR A USER
+router.post('/:id/book', function(req, res){
+    User.findById(req.params.id, function(err, user){
+        author.book.push(new Book({body: req.body.newBook}))
+        user.save(function(err){
+            res.redirect(`/users/${user.id}`);
+        });
+    });
+});
+
+
+
 // SIGN UP ROUTE
 router.get('/signup', function(req, res) {
   User.register(new User(
