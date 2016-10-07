@@ -32,10 +32,6 @@ router.get('/:id', function(req, res){
   });
 });
 
-
-
-
-
 // USERS CREATE ROUTE
 router.post('/', function(req,res){
   var User = new User({
@@ -48,6 +44,12 @@ router.post('/', function(req,res){
   });
 });
 
+// USERS EDIT ROUTE
+router.get('/:id/edit', function(req, res){
+  User.findById(req.params.id, function(err, user){
+    res.render('users/edit', {user: user});
+  });
+});
 
 
 
