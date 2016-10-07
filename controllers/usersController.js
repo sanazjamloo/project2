@@ -16,7 +16,8 @@ router.get('/', (req, res) => {
 
 // USERS NEW ROUTE
 router.get('/new', function(req, res){
-  res.send("New is working");
+  // res.send("New is working");
+  res.render('users/new');
 });
 
 
