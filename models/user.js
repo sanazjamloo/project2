@@ -14,17 +14,20 @@ var userSchema = new Schema({
   password: String
 });
 
-userSchema.pre('save', function(next){
-  now = new Date();
-  this.updated_at = now;
-  if ( !this.created_at ) {
-    this.created_at = now;
-  }
-  next();
-});
+
+userSchema.plugin(passportLocalMongoose);
+
+// userSchema.pre('save', function(next){
+//   now = new Date();
+//   this.updated_at = now;
+//   if ( !this.created_at ) {
+//     this.created_at = now;
+//   }
+//   next();
+// });
 // Connection between the user collection and the user schema
 var User = mongoose.model("User", userSchema);
 
-userSchema.plugin(passportLocalMongoose);
+
 
 module.exports = User

@@ -57,7 +57,7 @@ router.get(':id', function(req,res){
   var query = User.findById({_id: req.params.id})
   query.then(function(user){
     res.json(user)
-  });
+  })
   .catch(function(err){
     res.json({message: 'nope' + err});
   });

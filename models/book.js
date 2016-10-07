@@ -12,8 +12,10 @@ var ObjectId     = Schema.ObjectId;
   memo: String
 });
 
-var Book = mongoose.model("Book", bookSchema);
 
 bookSchema.plugin(passportLocalMongoose);
+var Book = mongoose.model("Book", bookSchema);
+
+
 
 module.exports = Book
