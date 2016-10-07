@@ -9,11 +9,20 @@ var User            = require('../models/user.js');
 
 // USERS INDEX ROUTE
 router.get('/', (req, res) => {
-  console.log('session', req.session)
-  console.log('req.user', req.user)
-  res.render('users/index', {user: req.user})
+  User.find({}, function(err, users){
+  res.render('users/index', {users: users})
+  });
 });
 
+// USERS NEW ROUTE
+router.get('/new', function(req, res){
+  res.send("New is working");
+});
+
+
+
+
+// DUMMIE TEST ROUTE
 router.get('/test', (req, res) => {
   res.send('test route is working!');
 });
