@@ -91,22 +91,57 @@ router.delete('/:userId/book/:id', function (req, res){
 });
 
 
-
-
-
-// SIGN UP ROUTE
-router.get('/signup', function(req, res) {
-  console.log('signup route');
-  User.register(new User(
-    {username: req.body.username }),
+// SIGN UP ROUTE/REGISTER WITH AUTHENTICATION
+router.post('/signup', function(req, res){
+  console.log(req.body)
+  User.signup(new User(
+    {username: req.body.username}),
     req.body.password,
     function(err, user) {
-     if (err) {
-       return res.status(400).send("Can not register");
-       }
-     res.redirect('/users/signup');
-     });
+      if (err) {
+        // return res.json({user:user});
+        return res.status(400).send("Could not register");
+      } // end if
+      passport.authenticate('local')(req, res, function(){
+      res.redirect('/');
+      console.log(req.user);
+    });
+  });
 });
+
+
+
+
+  // console.log('signup route');
+  // User.signup(new User(
+  //   {username: req.body.username }),
+  //   req.body.password,
+//     function(err, user) {
+//      if (err) {
+//        return res.status(400).send("Can not register");
+//        }
+//      res.redirect('/');
+//      });
+// });
+
+
+// userRouter.route('/signup')
+// .get(function(req, res){
+//   res.render('signup', {flash: req.flash('signupMessage')})
+// })
+// .post(passport.authenticate('local-signup',{
+//   successRedirect: '/main',
+//   failureRedirect: '/signup'
+// }))
+
+
+
+
+
+
+
+
+
 
 
 //POST/LOG IN
