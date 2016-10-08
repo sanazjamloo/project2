@@ -11,30 +11,60 @@ var User            = require('../models/user.js');
 //   res.send('test route is working!');
 // });
 
-router.get('/', function(req, res){
-  res.send('you are here!');
-})
+// router.get('/', function(req, res){
+//   res.send('you are here!');
+// })
 
 
 // SIGN UP ROUTE/REGISTER WITH AUTHENTICATION
-router.post('/signup', function(req, res){
-  res.send('this is users sign up')
+//for Admin
+router.post('/register', function(req, res) {
+  // console.log(req.user);
   User.register(
     new User({
       username: req.body.username,
-      // password: req.body.password,
-      email: req.body.email,
     }),
     req.body.password,
-    function(err, user){
-      if (err) {
-        return res.status(400).send("Could not register");
-      }
-      res.redirect('/');
-      console.log(req.user);
-    }
-  )
+    function(err, user) {
+      if (err)
+        {
+        return res.status(400).send('Could not register');
+        }
+        passport.authenticate('local')(req, res, function(){
+          res.redirect('/');
+          console.log(req.user);
+        });
+    });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+// router.post('/signup', function(req, res){
+//   res.send('this is users sign up')
+//   User.register(
+//     new User({
+//       username: req.body.username,
+//       email: req.body.email,
+//     }),
+//     req.body.password,
+//     function(err, user){
+//       if (err) {
+//         return res.status(400).send("Could not register");
+//       }
+//       res.redirect('/');
+//       console.log(req.user);
+//     }
+//   )
+// });
 
 
 
