@@ -1,11 +1,11 @@
 var mongoose     = require('mongoose');
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
 
 var Schema = mongoose.Schema;
 //
 var UserSchema = new Schema({
   name: String,
-  email: { type: String, required: true, unique: true },
+  email: String,
   created_at: Date,
   updated_at: Date,
   password: String

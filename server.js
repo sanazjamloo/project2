@@ -2,6 +2,7 @@
 // ====================================================
 var express         = require('express');
 var mongoose        = require('mongoose');
+mongoose.Promise    = global.Promise;
 var bodyParser      = require('body-parser');
 var methodOverride  = require('method-override');
 var hbs             = require('hbs');
@@ -42,7 +43,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // ROOT ROUTE
 app.get('/', function(req, res){
-  // res.send("WELCOME TO MY BOOKWORMS CLUB!!! root route");
+  // res.send("WELCOME TO BOOKWORMS CLUB!!! root route");
   res.render('homepage')
 });
 

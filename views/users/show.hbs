@@ -13,7 +13,7 @@
 {{#each user.book}}
   <div class="book-show-each">
     <p>{{body}}</p>
-    <form method="post" action="/users/{{../user._id}}/reminders/{{_id}}?_method=delete">
+    <form method="post" action="/users/{{../user._id}}/book/{{_id}}?_method=delete">
         <input type="submit" value="Delete!">
     </form>
   </div>
