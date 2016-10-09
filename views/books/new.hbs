@@ -1,0 +1,23 @@
+<h1> Adding new book</h1>
+
+
+<h1>The user new view is rendering!<h1>
+  <h2>Create new user(Create book History)</h2>
+<form action="/books/new" method="post">
+    <label>Name:</label>
+    <input type="text" name="title">
+    <input type="text" name="author">
+    <input type="text" name="ISBN">
+    <input type="text" name="memo">
+    <input type="submit">
+</form>
+
+
+<li>
+  <ul>
+    {{book.title}}
+    {{book.author}}
+    {{book.ISBN}}
+    {{book.memo}}
+  </ul>
+  <li>
