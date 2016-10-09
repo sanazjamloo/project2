@@ -1,21 +1,21 @@
 // Plugin passport-local Mongoose into User schema
 var mongoose              = require('mongoose');
-var passportLocalMongoose = require('passport-local-mongoose');
+//var passportLocalMongoose = require('passport-local-mongoose');
 
 var Schema       = mongoose.Schema;
-var ObjectId     = Schema.ObjectId;
+//var ObjectId     = Schema.ObjectId;
 
 // var User       = new Schema({})
 var userSchema = new Schema({
   username: String,
-  email: { type: String, required: true, unique: true },
-  created_at: Date,
-  updated_at: Date,
+  email: String,
+  // created_at: Date,
+  // updated_at: Date,
   password: String
 });
 
 
-userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(require('passport-local-mongoose'));
 
 // userSchema.pre('save', function(next){
 //   now = new Date();
@@ -26,7 +26,7 @@ userSchema.plugin(passportLocalMongoose);
 //   next();
 // });
 // Connection between the user collection and the user schema
-var User = mongoose.model("User", userSchema);
+var User = mongoose.model('User', userSchema);
 
 
 

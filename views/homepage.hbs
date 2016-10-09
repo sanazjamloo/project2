@@ -1,15 +1,15 @@
 <h1>Welcome to the Bookworms Club!</h1>
 <h3>Join today and Sign Up:</h3>
 <!-- <form action='/home/{{_id}}' method="POST"> -->
-<form action='users/signup' method="POST">
+<!-- <form action='users/signup' method="post">
   <input type='text' name='username' placeholder='Worm Name'>
-  <input type='password' name='password' placeholder='Worm Password'><br><br>
-  <button type='signup' name='button'>Worm Up</button>
-</form>
+  <input type='password' name='password' placeholder='Worm Password'><br><br> -->
+  <!-- <button type='signup' name='button'>Worm Up</button> -->
+<!-- </form> -->
 <br>
 <h4>Log In:</h4>
-<form action='/home/{{user.userId}}' method="GET">
+<form id='login' action='/users/login' method='POST'>
   <input type='text' name='username' placeholder='username'>
   <input type='password' name='password' placeholder='password'><br><br>
-  <button type='submit' name='button'>Worm In</button>
+  <button type='submit' name='button' >Worm In</button>
 </form>

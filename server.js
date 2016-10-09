@@ -3,57 +3,78 @@
 var express         = require('express');
 var mongoose        = require('mongoose');
 mongoose.Promise    = global.Promise;
+
+
+var hbs             = require('hbs');
 var bodyParser      = require('body-parser');
 var methodOverride  = require('method-override');
-var hbs             = require('hbs');
 var passport        = require('passport');
 var LocalStrategy   = require('passport-local').Strategy;
 var usersController = require('./controllers/usersController.js');
 // pry                 = require('pryjs');
+
+
+var mongoURI =  process.env.MONGODB_URI || 'mongodb://localhost/bookworm';
+mongoose.connect(mongoURI);
 // ===================================================
-//  MODELS
-// ====================================================
-var User = require('./models/user');
-var Book = require('./models/book');
+
 // ====================================================
 // Instantiate a new Express app:
 var app  = express();
 // ====================================================
 // MIDDLEWARE/ CONFIGURATION
 // ====================================================
-app.set('view engine', 'hbs');
+
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
-app.use(express.static(__dirname + '/public'));
-app.use('/users', usersController);
+app.set('view engine', 'hbs');
+
 
 app.use(require('express-session')({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false
 }));
+//  MODELS
+// ====================================================
+var User = require('./models/user.js');
+var Book = require('./models/book.js');
+
+
 app.use(passport.initialize());
 app.use(passport.session());
+
 // console.log(User);
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 // ===================================================
+app.use('/users', usersController);
+
+//app.use('/',require('./controllers/usersController.js'));
+//app.listen(3000);
 
 // ROOT ROUTE
 app.get('/', function(req, res){
-  // res.send("WELCOME TO BOOKWORMS CLUB!!! root route");
-  res.render('homepage')
+  //res.send("WELCOME TO BOOKWORMS CLUB!!! root route");
+  res.render('homepage');
 });
 
+// router.get('/', function(req, res) {
+//   res.send('Working? HOME');
+// });
+  // res.send("WELCOME TO BOOKWORMS CLUB!!! root route");
+// res.use('/', require('./controllers/usersController.js'));
 
 // Specify the Mongo database in server.js.
-var mongoURI =  process.env.MONGODB_URI || 'mongodb://localhost/bookworm';
-mongoose.connect(mongoURI);
+
 
 // Save that connection to the database in a variable.
 var db  =    mongoose.connection;
+
+
 
 // Will log an error if db cant connect to MongoDB.
 db.on('error', function(err){
