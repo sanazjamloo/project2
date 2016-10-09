@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var passportLocalMongoose = require('passport-local-mongoose');
+// var passportLocalMongoose = require('passport-local-mongoose');
 
 var Schema  = mongoose.Schema;
 var ObjectId     = Schema.ObjectId;
@@ -13,7 +13,7 @@ var ObjectId     = Schema.ObjectId;
 });
 
 
-bookSchema.plugin(passportLocalMongoose);
+//bookSchema.plugin(passportLocalMongoose);
 var Book = mongoose.model("Book", bookSchema);
 
 

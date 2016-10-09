@@ -1,12 +1,37 @@
 <h1> Adding new book</h1>
-
+<!-- <h2>Book History for {{user.name}}</h2> -->
 <h2>Create Book History</h2>
   <form action="/books/new" method="post">
-
   <input  type='text' name='title' placeholder='title'><br><br>
   <input  type='text' name='author' placeholder='author'><br><br>
   <input  type='text' name='ISBN' placeholder='ISBN'><br><br>
   <input  type='text' name='memo' placeholder='memo'><br><br>
-
   <button name='button' type='submit'>Submit</button>
 </form>
+
+
+<div>
+{{#each user.book}}
+  <div class="book-show-each">
+    <p>{{body}}</p>
+      <!-- <form method="post" action="/users/{{../user._id}}/book/{{_id}}?_method=delete">
+        <input type="submit" value="Delete!">
+    </form> -->
+  </div>
+{{/each}}
+</div>
+
+<div id="book-new">
+  <h3>New Book</h3>
+    <form action="/users/{{user._id}}/book" method="post">
+        <label>Title</label>
+        <input type="text" name="newBook">
+        <!-- <input type="submit"> -->
+    </form>
+</div>
+
+
+<div id="user-edit">
+    <a href="/users/{{user._id}}/edit">Edit User</a>
+    <a href="/users">Back</a>
+</div>

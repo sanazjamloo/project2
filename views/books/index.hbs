@@ -1,0 +1,23 @@
+<h4>This is index page</h4>
+
+
+
+  <!-- <form>
+  <label name='searchString'> Filter List By Name: </label>
+  <input name='searchString'>
+   <input type='submit' value='Filter'>
+ </form> -->
+ <!-- <form>
+  <input type='submit' value='Clear Filter'>
+ </form> -->
+ <ul>
+ {{#each bookIndex}}
+   <li>
+     <a href='/book/{{ISBN}}'>
+      <span> #{{title}} : {{author}} : {{memo}}</span>
+    </a>
+   </li>
+ {{/each}}
+ </ul>
+
+ <a href='/books/new'> Add a Book To the Index </a>
