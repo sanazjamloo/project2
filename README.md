@@ -13,7 +13,7 @@ User of MongoDB and Express to create data CRUD
 Produce a RESTful API that expresses at least one model
 Authenticate users using at least one OAuth provider
 Restrict access to the Creation, Updating, and Deletion of resources using an authorization middleware function
-Be deployed online using Heroku
+Be deployed online using Heroku.
 
 Necessary Deliverables
 
@@ -35,13 +35,13 @@ Some of the MVP that was needed to complete the project:
 
 Technologies/Frameworks used
 
-HTML5
-CSS
-JavaScript
-jQuery
-Node.js
-Express.js
-MongoDB.js
+- HTML5
+- CSS
+- JavaScript
+- jQuery
+- Node.js
+- Express.js
+- MongoDB.js
 
 
 User stories
@@ -50,8 +50,8 @@ As a user, I want to keep track of all the book I collect.  I need to organize, 
 
 
 Wireframes
-http://imgur.com/gallery/s8Thq
-http://imgur.com/Mr0CjOv
+-- http://imgur.com/gallery/s8Thq
+-- http://imgur.com/Mr0CjOv
 
 Approach taken
 
@@ -61,5 +61,6 @@ I created models, views, and controllers for this app. Full CRUD was needed usin
 Lastly, after all the debugging, the app was deployed to Heroku.
 
 Future Implementations
-Need to complete the authorization and authentication as well as the full CRUD routing.
-The ability to have a more detailed list of the books.
+
+- Need to complete the authorization and authentication as well as the full CRUD routing.
+- The ability to have a more detailed list of the books.
