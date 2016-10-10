@@ -30,11 +30,6 @@ router.get('/', function(req, res){
 });
 
 
-
-
-
-
-
 // BOOKS NEW ROUTE
 router.get('/new', function(req, res){
   // res.send("New is working");
@@ -119,28 +114,8 @@ router.post('/new', function(req, res){
 //   });
 // });
 //
-// // USERS SHOW ROUTE
-// router.get('/:id', function(req, res){
-//   User.findById(req.params.id, function(err, user){
-//     // console.log(user);
-//     // res.send(user);
-//     res.render('users/show', {user: user});
-//   });
-// });
 //
 //
-//
-//
-//
-// router.get(':id', function(req,res){
-//   var query = User.findById({_id: req.params.id})
-//   query.then(function(user){
-//     res.json(user)
-//   })
-//   .catch(function(err){
-//     res.json({message: 'nope' + err});
-//   });
-// });
 //
 // // DESTROY THE SESSION WHEN A USER LOGS OUT
 // router.get('/logout', function(req, res) {

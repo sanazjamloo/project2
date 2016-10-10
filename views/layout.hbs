@@ -10,17 +10,15 @@
   <div id="container">
     <header>
       <!-- <h1><a href="/users">Bookwrom App</a></h1> -->
-  <ul style="display: inline;">
+      <ul style="display: inline;">
     {{#if user}}
       <p>Hello {{user.username}}</p>
       <li><a href="/users/logout">logout</a></li>
     {{else}}
-  
-
     <!-- <li><a href="/users/login">login</a></li> -->
-      <li><a href="/users/signup">Sign Up</a></li>
-    {{/if}}
-  </ul>
+    <a href="/users/signup">Sign Up</a>
+    <!-- {{/if}} -->
+  <!-- </ul> -->
   {{{body}}}
 </body>
 </html>
