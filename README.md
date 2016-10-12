@@ -11,7 +11,7 @@ The guidelines listed below were provided by the project markdown:
 
 User of MongoDB and Express to create data CRUD
 Produce a RESTful API that expresses at least one model
-Authenticate users using at least one OAuth provider
+Authenticate users
 Restrict access to the Creation, Updating, and Deletion of resources using an authorization middleware function
 Be deployed online using Heroku.
 
@@ -26,7 +26,7 @@ A Git repository hosted on Github, with frequent commits from every team member 
 MVP
 Some of the MVP that was needed to complete the project:
 
-- A working login page that includes both local and OAuth login options
+- A working login page by local login options
 - A working create account feature that allows users to create a bookWorm account
 - The ability for users to create, edit, and delete a profile
 - The ability for users to create, edit and delete book logs
