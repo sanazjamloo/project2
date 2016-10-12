@@ -17,7 +17,6 @@ var Book            = require('../models/book.js');
 
 // USER SIGN UP ROUTE
 router.post('/signup', function(req, res){
-  console.log(req.user);
   User.register(
     new User({
       username: req.body.username,
@@ -33,12 +32,11 @@ router.post('/signup', function(req, res){
       }
         passport.authenticate('local')(req, res, function(){
           res.redirect('/');
-          console.log(req.user);
         });
     })
 });
 
-// Users Sign Up page
+// USER SIGN UP Page
 router.get('/signup', function(req, res) {
   // res.send('registering');
   res.render('users/signup.hbs');
@@ -51,11 +49,12 @@ router.get('/login', function(req, res) {
 });
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
+  var user = {username: "derek"};
   req.session.save(function (err) {
     if (err) {
       return next(err);
     }
-    res.redirect('users');
+    res.render('users/index', {user: user} );
   });
 });
 
@@ -76,7 +75,7 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
 // });
 
 // LOG OUT ROUTE
-router.get('/signout', function(req, res) {
+router.get('/logout', function(req, res) {
   // console.log('logged out: ' + req.user);
   req.logout();
   res.redirect('/');
