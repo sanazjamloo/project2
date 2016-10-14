@@ -13,30 +13,26 @@ var LocalStrategy   = require('passport-local').Strategy;
 var usersController = require('./controllers/usersController.js');
 var booksController = require('./controllers/booksController.js');
 // pry                 = require('pryjs');
-
-
 var mongoURI =  process.env.MONGODB_URI || 'mongodb://localhost/bookworm';
 mongoose.connect(mongoURI);
 // ===================================================
-
-// ====================================================
 // Instantiate a new Express app:
 var app  = express();
 // ====================================================
 // MIDDLEWARE/ CONFIGURATION
 // ====================================================
-
-app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
-app.set('view engine', 'hbs');
+app.use(express.static(__dirname + '/public')); //css
+// app.use(logger('dev'));
 
+app.set("view engine", "hbs");
 
 app.use(require('express-session')({
   secret: 'keyboard cat',
   resave: false,
-  saveUninitialized: false
+  saveUnitialized: false
 }));
 //  MODELS
 // ====================================================
@@ -46,26 +42,22 @@ var Book = require('./models/book.js');
 // database
 // ====================================================
 // Specify the Mongo database in server.js.
-
-
 // Save that connection to the database in a variable.
 var db  =    mongoose.connection;
 // Will log an error if db cant connect to MongoDB.
 db.on('error', function(err){
-  console.log(err);
+  // console.log(err);
 });
 // Will log the message below if it succefully connects.
 db.once('open', function(){
   console.log("Database Has Been Connected!");
 });
 
-// PASSPORT Stuff
+// PASSPORT
 // ====================================================
-
 app.use(passport.initialize());
 app.use(passport.session());
 
-// console.log(User);
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -83,12 +75,6 @@ app.get('/', function(req, res){
   //res.send("WELCOME TO BOOKWORMS CLUB!!! root route");
   res.render('homepage');
 });
-
-// router.get('/', function(req, res) {
-//   res.send('Working? HOME');
-// });
-  // res.send("WELCOME TO BOOKWORMS CLUB!!! root route");
-// res.use('/', require('./controllers/usersController.js'));
 
 
 

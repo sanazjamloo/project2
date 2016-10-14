@@ -38,16 +38,20 @@ router.get('/new', function(req, res){
 
 
 router.post('/new', function(req, res){
+  var userId = req.body.id;
   var book = {
     title: req.body.title,
     author: req.body.author,
     ISBN: req.body.ISBN,
     memo: req.body.memo
   };
+  //user.findbyid, create and add book to books array
   Book.create(book, function(err, oneBook){
-    if (err) {console.log(err)};
-    console.log(book);
-    res.render('books/index');
+    if (err) {console.log(err)}
+    else {
+      console.log(book);
+      res.render('books/new');
+    }
   })
 });
 

@@ -1,11 +1,54 @@
-<h1> users index page/ Create book history</h1>
+<h1>Create book history</h1>
+
 
 {{#if user}}
 Hi! {{user.username}}
   {{else}}
-  Please sign up! (join the bookworms club!)
   {{/if}}
   <ul>
-    <li>{{user}}</li>
-    <a href="/users/{{_id}}">show</a>
+    <!-- <a href="/users/{{_id}}">show</a> -->
   </ul>
+  <h1> Adding new book</h1>
+  <!-- <h2>Book History for {{user.name}}</h2> -->
+  <h2>Create Book History</h2>
+    <form action="/books/new" method="post">
+    <input  type='text' name='userId' value='{{user._id}}'><br><br>
+    <input  type='text' name='title' placeholder='title'><br><br>
+    <input  type='text' name='author' placeholder='author'><br><br>
+    <input  type='text' name='ISBN' placeholder='ISBN'><br><br>
+    <input  type='text' name='memo' placeholder='memo'><br><br>
+    <button name='button' type='submit'>Submit</button>
+  </form>
+
+ <!-- Work on getting all the books for this user to show up using {{EACH}} -->
+ <!-- Work on getting all the books for this user to show up using {{EACH}} -->
+ <!-- Work on getting all the books for this user to show up using {{EACH}} -->
+ <!-- HOW DO I RENDER EACH BOOK IN THE BOOK ARRAY ??? -->
+  <h3>Here are your books!</h3>
+  <div>
+  {{#each user.books}}
+    <div class="book-show-each">
+    <ul class="books">
+      <li>Title:{{title}}</li>
+      <li>Author:{{author}}</li>
+      <li>ISBN:{{ISBN}}</li>
+      <li>Memo:{{memo}}</li>
+
+        <!-- <form method="post" action="/users/{{../user._id}}/book/{{_id}}?_method=delete">
+          <input type="submit" value="Delete!">
+      </form> -->
+    </div>
+    <form>
+      <button name='button' type='submit'>Delete</button>
+    </form>
+
+    <div id="book-edit">
+        <a href="/users/{{user._id}}/edit">Edit Book</a>
+        <a href="/users">Back</a>
+    </div>
+
+  {{/each}}
+  </div>
+  <!-- Work on getting all the books for this user to show up using {{EACH}} -->
+  <!-- Work on getting all the books for this user to show up using {{EACH}} -->
+  <!-- Work on getting all the books for this user to show up using {{EACH}} -->

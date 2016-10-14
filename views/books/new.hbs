@@ -1,6 +1,6 @@
-<h1> Adding new book</h1>
-<!-- <h2>Book History for {{user.name}}</h2> -->
-<h2>Create Book History</h2>
+  <h1> Adding new book</h1>
+ <h2>Book History for {{user.name}}</h2>
+  <h2>Create Book History</h2>
   <form action="/books/new" method="post">
   <input  type='text' name='title' placeholder='title'><br><br>
   <input  type='text' name='author' placeholder='author'><br><br>
@@ -14,10 +14,10 @@
 {{#each user.book}}
   <div class="book-show-each">
     <p>{{body}}</p>
-      <!-- <form method="post" action="/users/{{../user._id}}/book/{{_id}}?_method=delete">
+      <form method="post" action="/users/{{../user._id}}/book/{{_id}}?_method=delete">
         <input type="submit" value="Delete!">
-    </form> -->
-  </div>
+    </form>
+   </div>
 {{/each}}
 </div>
 
@@ -26,8 +26,8 @@
     <form action="/users/{{user._id}}/book" method="post">
         <label>Title</label>
         <input type="text" name="newBook">
-        <!-- <input type="submit"> -->
-    </form>
+         <input type="submit">
+     </form>
 </div>
 
 

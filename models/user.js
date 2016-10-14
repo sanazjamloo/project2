@@ -11,7 +11,8 @@ var userSchema = new Schema({
   email: String,
   // created_at: Date,
   // updated_at: Date,
-  password: String
+  password: String,
+  books: []
 });
 
 userSchema.plugin(require('passport-local-mongoose'));
