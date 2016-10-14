@@ -87,26 +87,37 @@ router.get('/login', function(req, res){
 // [] index.hbs form complete
 // [] saving this book to the database
 // [] render index.hbs
-router.post('/new', function(req, res){
+router.post('/:userId/new', function(req, res){
   //redirect back to the same view
-  // var newBook = new Book [
-  //   title: req.body.title,
-  //   author: req.body.author,
-  //   ISBN: req.body.ISBN,
-  //   memo: req.body.memo
-  // ]
+  //user / book / new book
+  User.findById(req.params.userId, function(err, user){
+    console.log("Posting new book for user: ", user);
+    var newBook = new Book ({
+      title: req.body.title,
+      author: req.body.author,
+      ISBN: req.body.ISBN,
+      memo: req.body.memo
+    })
+
+    newBook.save(function(err){
+      if (err)
+      res.send(err);
+    })
+
+    user.books.push(newBook);
+
+    user.save(function(err){
+      res.redirect('/users/index/' + user._id)
+    })
+
+  })//end new route
+
   //first we create new book
   //then we have to find the user using the req.body.userId
   //then we have to add the new book to the users book array
-User.findById(id, function(err, user){
-  console.log(user);
-  user.books.push(newBook);
-
-})
 
 
 
-  res.redirect('/users/index')
 });
 
 //==============================
@@ -114,6 +125,8 @@ User.findById(id, function(err, user){
 //===============================
 router.get('/:userId/edit', function(req,res){
   // render the edit page
+  // res.send("is it working?")
+  res.render('users/edit')
 });
 
 
@@ -121,7 +134,7 @@ router.get('/:userId/edit', function(req,res){
 // EDIT BOOK - POST REQUEST
 //==============================
 router.post('/:userId',function(req,res){
-
+//User/data from the form /save the book
 });
 
 //==============================

@@ -11,7 +11,7 @@ Hi! {{user.username}}
   <h1> Adding new book</h1>
   <!-- <h2>Book History for {{user.name}}</h2> -->
   <h2>Create Book History</h2>
-    <form action="/books/new" method="post">
+    <form action="/users/{{user._id}}/new" method="post">
     <input  type='text' name='userId' value='{{user._id}}'><br><br>
     <input  type='text' name='title' placeholder='title'><br><br>
     <input  type='text' name='author' placeholder='author'><br><br>
@@ -43,7 +43,7 @@ Hi! {{user.username}}
     </form>
 
     <div id="book-edit">
-        <a href="/users/{{user._id}}/edit">Edit Book</a>
+        <a href="/users/{{../user._id}}/edit">Edit Book</a>
         <a href="/users">Back</a>
     </div>
 

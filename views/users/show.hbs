@@ -1,0 +1,11 @@
+<h2>Book History</h2>
+<div>
+  <ul>
+    {{#each user.book}}
+    <li>Title: {{Title}}</li>
+    <li>Author: {{Author}}</li>
+    <li>ISBN: {{ISBN}}</li>
+    <li>Memom:{{Memom}}</li>
+    <li><a href="users/edit/{{../user._id}}">Edit</a></li>
+
+    <!-- <form  action="/users/{{../user._id}}method="post" -->
