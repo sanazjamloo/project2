@@ -63,17 +63,15 @@ router.get('/signup', function(req, res) {
   res.render('users/signup.hbs');
 });
 
-
 // LOG IN ROUTE
 router.post('/login', passport.authenticate('local'), function(req, res) {
   req.session.save(function (err) {
     if (err) {
       return next(err);
     }
-    res.redirect('/users/index/'+req.user._id);
+    res.redirect('/users/index/' +req.user._id);
   });
 });
-
 
 router.get('/login', function(req, res){
   console.log(req.session)
@@ -98,26 +96,15 @@ router.post('/:userId/new', function(req, res){
       ISBN: req.body.ISBN,
       memo: req.body.memo
     })
-
     newBook.save(function(err){
       if (err)
       res.send(err);
     })
-
     user.books.push(newBook);
-
     user.save(function(err){
       res.redirect('/users/index/' + user._id)
     })
-
   })//end new route
-
-  //first we create new book
-  //then we have to find the user using the req.body.userId
-  //then we have to add the new book to the users book array
-
-
-
 });
 
 //==============================
@@ -133,33 +120,69 @@ router.get('/:userId/edit', function(req,res){
 //==============================
 // EDIT BOOK - POST REQUEST
 //==============================
-router.post('/:userId',function(req,res){
+router.put('/:userId/edit/:id',function(req,res){
 //User/data from the form /save the book
-});
+// console.log(req.params.userId, req.params.bookId);
+var user = User.findById({id: req.params.userId});
+var bookId = Book.findById({id: req.params.bookId});
+
+   User.findByIdAndUpdate(req.params.user._id, {
+       title: req.body.title,
+       author: req.body.author,
+       ISBN: req.body.ISBN,
+       memo: req.body.memo,
+   }, {new: true}, function(err, newBook) {
+     res.redirect('/users/index/' + user._id);
+   });
+ });
 
 //==============================
 // DELETE BOOK - POST REQUEST
 //===============================
-// router.post('SOMETHING???', function(req, res){
-//   //delete the book I am viewing
+//router.delete('/:userId/delete/:id', function(req, res){
+router.delete('/:userId/delete/:id', function(req, res){
+  //var bookId = Book.findById({id: req.params.bookId});
+  //console.log(req.body);
+  console.log('This is a test book ID is '+req.params.id);
+User.findOne({_id:req.params.id}).exec()
+.then(function(user){
+  var item=user.books.id(req.params.id);
+  item.remove();
+  user.save();
+
+
+ res.redirect('/users/index/'+ req.params.userId);
+
+
+})
+});
+
+
+  //
+  // Book.findByIdAndRemove(req.params.books, function(err, books){
+  //     if (err) console.log('Here is the error:'+err);
+  //   //$pull:{
+    //  books: {_id: req.params._id}
+    //   title: req.body.title,
+    //   author: req.body.author,
+    //   ISBN: req.body.ISBN,
+    //   memo: req.body.memo,
+//    }
+//  },
+//res.send('This is a test')
+  //function(err) {
+
+//  }
+// });
 // });
 
+  // function(err, newBook) {
+  //   if (err) console.log(err);
+  //   console.log('Book Deleted');
+    // res.redirect('/users/index' + user._id);
 
-// router.get('/users/index/:id', function(req, res) {
-//   var userId = req.params.id;
-//   //find user by id
-//
-//   var user = User.findById(id, function(err, user){
-//     userId = req.params.id;
-//       console.log(user);
-//   }),
-
-  //res.render user.index
-  //send user
-
-//   res.render('user/index', {user : user})
+// );
 // });
-
 
 
 // LOG OUT ROUTE

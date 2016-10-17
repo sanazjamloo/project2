@@ -9,8 +9,6 @@ var Schema       = mongoose.Schema;
 var userSchema = new Schema({
   username: String,
   email: String,
-  // created_at: Date,
-  // updated_at: Date,
   password: String,
   books: []
 });

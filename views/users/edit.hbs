@@ -1,13 +1,19 @@
 <h2>Edit Your Books {{user.name}}!</h2>
-<form action="/users/{{user._id}}?_method=put" method="post">
-    <!-- <label>Name:</label> -->
-    <input type="text" name="name" value="{{user.name}}">
-    <input  type='text' name='userId' value='{{user._id}}'><br><br>
+<form action='/users/index/{{user._id}}' method='PUT'>
+    <!-- <input type="text" name="name" value="{{user.name}}"> -->
+    <!-- <input  type='text' name='userId' value='{{user._id}}'><br><br> -->
     <input  type='text' name='title' placeholder='title'><br><br>
     <input  type='text' name='author' placeholder='author'><br><br>
     <input  type='text' name='ISBN' placeholder='ISBN'><br><br>
     <input  type='text' name='memo' placeholder='memo'><br><br>
-    <input type="submit">
-</form>
+    <!-- <a href="/users/{{../user._id}}/edit">Edit Book</a> -->
+    <button class='button' type='submit' name='edit'>Edit</button>
+  </form>
+
+
+
+
 <!-- It's a link to delete a user -->
-<div><a href="/users/{{user._id}}/delete">Delete User</a></div>
+<!-- <div><a href="/users/{{user._id}}/delete">Delete User</a></div> -->
+ <!-- <form action='/users/index/{{../user._id}}/delete/{{:bookId}}?_method=DELETE' method='delete'>
+ </form> -->
