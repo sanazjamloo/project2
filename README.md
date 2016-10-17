@@ -60,7 +60,21 @@ After that, I made a planning board and wrote user stories.
 I created models, views, and controllers for this app. Full CRUD was needed using RESTful routing but couldn't complete it.
 Lastly, after all the debugging, the app was deployed to Heroku.
 
-Future Implementations
 
-- Need to complete the authorization and authentication as well as the full CRUD routing.
-- The ability to have a more detailed list of the books.
+What I struggled the most in this project:
+
+My main strugglt with project2 was that, the unit 2 was very loaded and very accelrated and fast-paced, and I fell behind in grasping the whole concept of it at the first time.  It took longer than other student to understand the whole concept of it.  The second week of working on my project was a very good opportunity for me to fully understand the whole concept of this important unit, and thankful for that.  I worked so hard and tried my best to get all the MVP done, and I really made a huge progress.  On the first week I only had my Sign Up rout working, but now I have everything working, but my Delete route. I also had the  hardest time having my Update working properly.  I was able to get the first part of the Update working, which takes the user to the editing form, but  I did not succeed to update one single item/book. 
+
+List of the routes that are working and running:
+
+1- I have my full authentication (Sign Up, Sign In, and Log Out) working, so the user can sign up, make an account and view a user page, and can log out at the end of the session successfully.
+
+2- The user can also Add a book to his list of books, and See the book on the list.  
+
+3- The user also has the option of editing and deleting his books. 
+
+List of the routes that are not working properly:
+
+1- Second part of my Update route, and my Delete rout aren't working properly, but I'm very very close to have it working.  I'm sure that it's just a bug or a minor syntax issue, and I will need to keep debugging it.
+
+Thank you all for giving me this extra time to work more on my project, I actually learned a lot this past week while working on this project. 
